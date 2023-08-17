@@ -1,0 +1,20 @@
+=== Fetch Asset Snapshot Request by ID
+Fetches stored asset snapshot request with its current status and snapshot data. Possible statuses are `PENDING`,
+`SUCCESS` and `FAILED`. Response fields `total_asset_amount`, `asset_snapshot_merkle_root`,
+`asset_snapshot_merkle_depth` and `asset_snapshot_merkle_ipfs_hash` will be non-null only when asset snapshot status is
+`SUCCESS`. For `FAILED` status, field `failure_cause` will be non-null and have value of either `LOG_RESPONSE_LIMIT` or
+`OTHER`.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AssetSnapshotControllerApiTest/mustSuccessfullyCreateAndProcessAssetSnapshotForSomeAsset/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AssetSnapshotControllerApiTest/mustSuccessfullyCreateAndProcessAssetSnapshotForSomeAsset/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.payout.model.response.AssetSnapshotResponse.adoc[]

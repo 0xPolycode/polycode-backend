@@ -1,0 +1,16 @@
+=== Fetch Contract Interface by ID
+Fetches info about contract interface by interface ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractInterfacesControllerApiTest/mustCorrectlyFetchContractInterfaceById/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractInterfacesControllerApiTest/mustCorrectlyFetchContractInterfaceById/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.contract.interfaces.model.response.ContractInterfaceManifestResponse.adoc[]

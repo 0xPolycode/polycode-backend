@@ -1,0 +1,21 @@
+=== Fetch Wallet Authorization Request by ID
+Fetches stored wallet authorization request with its current status. The request is considered successful if the
+attached signed message is valid and was signed by `wallet_address`. If `wallet_address` was not specified when the
+request was created, then any valid signature will be accepted. For pending requests, `signed_message` field will always
+be `null`. If the signed message is invalid or does not match specified `wallet_address`, request will be considered as
+failed. If the request was crated with `store_indefinitely` field set to `false`, the the request will be deleted after
+the first time it is fetched by ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AuthorizationRequestControllerApiTest/mustCorrectlyFetchAuthorizationRequest/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AuthorizationRequestControllerApiTest/mustCorrectlyFetchAuthorizationRequest/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.wallet.authorization.model.response.AuthorizationRequestResponse.adoc[]

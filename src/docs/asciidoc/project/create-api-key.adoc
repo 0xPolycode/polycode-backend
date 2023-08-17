@@ -1,0 +1,16 @@
+=== Create Project API Key
+Creates an API key for the specified project ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyCreateApiKeyForSomeProject/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyCreateApiKeyForSomeProject/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.api.access.model.response.ApiKeyResponse.adoc[]

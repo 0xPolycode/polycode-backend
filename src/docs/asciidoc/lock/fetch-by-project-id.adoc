@@ -1,0 +1,16 @@
+=== Fetch ERC20 Lock Requests by Project ID
+Fetches stored ERC20 lock requests with their current status filtered by project ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/Erc20LockRequestControllerApiTest/mustCorrectlyFetchErc20LockRequestsByProjectId/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/Erc20LockRequestControllerApiTest/mustCorrectlyFetchErc20LockRequestsByProjectId/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.asset.lock.model.response.Erc20LockRequestsResponse.adoc[]

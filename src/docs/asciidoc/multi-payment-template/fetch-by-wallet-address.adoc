@@ -1,0 +1,16 @@
+=== Fetch Multi-Payment Templates
+Fetches stored multi-payment templates for the specified wallet address.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyFetchAllMultiPaymentTemplatesForWalletAddress/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyFetchAllMultiPaymentTemplatesForWalletAddress/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.asset.multisend.model.response.MultiPaymentTemplatesResponse.adoc[]

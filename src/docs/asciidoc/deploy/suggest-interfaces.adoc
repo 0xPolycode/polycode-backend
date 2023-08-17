@@ -1,0 +1,17 @@
+=== Fetch Suggested Interfaces For Imported Smart Contract by Contract Deployment Request ID
+Fetches suggested smart contract interfaces for imported smart contract which did not have a specified contract
+decorator ID. Only interfaces not already implemented by the smart contract will be returned.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ImportContractControllerApiTest/mustCorrectlySuggestInterfacesForImportedSmartContractWhenContractDecoratorIsNotSpecified/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ImportContractControllerApiTest/mustCorrectlySuggestInterfacesForImportedSmartContractWhenContractDecoratorIsNotSpecified/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.contract.interfaces.model.response.SuggestedContractInterfaceManifestsResponse.adoc[]

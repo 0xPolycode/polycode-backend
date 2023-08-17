@@ -1,0 +1,14 @@
+=== Delete Multi-Payment Template
+Deletes stored multi-payment template.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyDeleteMultiPaymentTemplate/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyDeleteMultiPaymentTemplate/http-response.adoc[]
+====

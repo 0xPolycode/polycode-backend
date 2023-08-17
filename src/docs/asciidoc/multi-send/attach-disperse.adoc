@@ -1,0 +1,19 @@
+=== Attach Disperse Transaction Info to Asset Multi-Send Request
+Attaches disperse transaction hash and caller wallet address to existing asset multi-send request. Once the disperse
+transaction hash is attached to the request, any subsequent attempts to attach a new approve transaction hash will fail.
+For token transfers, disperse transaction info must be attached after the approve transaction has been successful and
+its info has been attached to the request. For native asset transfers, only disperse transaction info must be attached.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AssetMultiSendRequestControllerApiTest/mustCorrectlyAttachDisperseTransactionInfo/http-request.adoc[]
+====
+.Request Schema
+include::{snippets}/polycode.model.request.AttachTransactionInfoRequest.adoc[]
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AssetMultiSendRequestControllerApiTest/mustCorrectlyAttachDisperseTransactionInfo/http-response.adoc[]
+====

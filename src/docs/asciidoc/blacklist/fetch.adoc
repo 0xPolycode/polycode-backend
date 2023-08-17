@@ -1,0 +1,16 @@
+=== Fetch List of Blacklisted Addresses
+Fetches list of blacklisted addresses. Only application admin wallets can call this endpoint.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/BlacklistControllerApiTest/mustCorrectlyListBlacklistedAddressesForAllowedUser/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/BlacklistControllerApiTest/mustCorrectlyListBlacklistedAddressesForAllowedUser/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.blacklist.model.response.BlacklistedAddressesResponse.adoc[]

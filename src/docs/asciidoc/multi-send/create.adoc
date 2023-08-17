@@ -1,0 +1,36 @@
+=== Create Asset Multi-Send Request
+Creates asset multi-send request with specified parameters. Parameters `redirect_url`, `sender_address`,
+`arbitrary_data`, `approve_screen_config` and all its child fields, and `disperse_screen_config` and all its child
+fields are optional. `arbitrary_data` field can contain any desired JSON value. Multi-send request ID can be
+interpolated into the `redirect_url` by placing `${id}` placeholder in the place where request ID is desired in the URL.
+The placeholder must strictly have dollar sign and brackets to be interpolated, and only `id` field can be interpolated.
+
+If `asset_type` is set to `NATIVE`, then chain-native currency will be send (i.e. Ether) and then `token_address` must
+not be present. If `asset_type` is set to `TOKEN`, then `token_address` must be present.
+
+For requests that send tokens, `approve_status` and `approve_tx` will be returned during the request creation and
+`disperse_status` and `disperse_tx` will be `null`. After the approve transaction info is attached and is successful,
+the `disperse_status` and `disperse_tx` fields will no longer be `null`.
+
+For requests that send native asset, `approve_status` and `approve_tx` will always be `null` and `disperse_status` and
+`disperse_tx` will always be non-`null`.
+
+*This request requires an API key present in the `X-API-KEY` header.*
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AssetMultiSendRequestControllerApiTest/mustCorrectlyCreateAssetMultiSendRequestForSomeTokenWithRedirectUrl/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AssetMultiSendRequestControllerApiTest/mustCorrectlyCreateAssetMultiSendRequestForSomeTokenWithRedirectUrl/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.asset.multisend.model.request.CreateAssetMultiSendRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.asset.multisend.model.response.AssetMultiSendRequestResponse.adoc[]

@@ -1,0 +1,55 @@
+= Polycode Documentation - Project and API Key Management
+Version {version}, {date}
+:doctype: book
+:toc: left
+:sectnums:
+:toclevels: 2
+:source-highlighter: prettify
+:docinfo: shared
+:icons: font
+
+== Introduction
+This document contains generated documentation for Polycode API endpoints used to manage projects
+and API keys. Source code is available on https://github.com/0xPolycode/polycode-backend[Github].
+
+include::src/docs/asciidoc/base-url.adoc[]
+
+== Project Management API
+All endpoints require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/project/create.adoc[]
+include::src/docs/asciidoc/project/fetch-by-id.adoc[]
+include::src/docs/asciidoc/project/fetch-all.adoc[]
+include::src/docs/asciidoc/project/create-api-key.adoc[]
+include::src/docs/asciidoc/project/fetch-api-key.adoc[]
+
+== API Usage Info API
+*Some* endpoints require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/api-usage/fetch-by-user.adoc[]
+include::src/docs/asciidoc/api-usage/fetch-by-api-key.adoc[]
+
+== Address Book Management API
+All endpoints require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/address-book/create.adoc[]
+include::src/docs/asciidoc/address-book/update.adoc[]
+include::src/docs/asciidoc/address-book/delete.adoc[]
+include::src/docs/asciidoc/address-book/fetch-by-alias.adoc[]
+
+== Multi-Payment Template Management API
+All endpoints require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/multi-payment-template/create.adoc[]
+include::src/docs/asciidoc/multi-payment-template/update.adoc[]
+include::src/docs/asciidoc/multi-payment-template/delete.adoc[]
+include::src/docs/asciidoc/multi-payment-template/add-item.adoc[]
+include::src/docs/asciidoc/multi-payment-template/update-item.adoc[]
+include::src/docs/asciidoc/multi-payment-template/delete-item.adoc[]
+
+== Blacklist API
+All endpoints require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/blacklist/fetch.adoc[]
+include::src/docs/asciidoc/blacklist/add.adoc[]
+include::src/docs/asciidoc/blacklist/remove.adoc[]

@@ -1,0 +1,16 @@
+++++
+<p id="base-api-url-descriptor">
+Base API URL is
+</p>
+<p id="internal-api-link">
+Internal API documentation which requires JWT authorization can be
+</p>
+<script>
+document.getElementById('base-api-url-descriptor').innerHTML +=
+ " <code>" + window.location.protocol + "//" + window.location.host + "/api/</code>";
+
+document.getElementById('internal-api-link').innerHTML +=
+  " <a href=\"" + window.location.protocol + "//" + window.location.host +
+  "/api/docs/internal.html\">here.</a>";
+</script>
+++++

@@ -1,0 +1,109 @@
+{
+    "tags": ["tag.example"],
+    "name": "name",
+    "description": "description",
+    "implements": ["trait.example"],
+    "eventDecorators": [
+        {
+            "signature": "ExampleEvent(address)",
+            "name": "Example Event",
+            "description": "Example Event description",
+            "parameterDecorators": [
+                {
+                    "name": "Arg",
+                    "description": "Arg description",
+                    "recommendedTypes": ["example"]
+                }
+            ]
+        }
+    ],
+    "constructorDecorators": [
+        {
+            "signature": "constructor(address)",
+            "description": "Constructor description",
+            "parameterDecorators": [
+                {
+                    "name": "Arg",
+                    "description": "Arg description",
+                    "recommendedTypes": ["example"]
+                }
+            ]
+        },
+        {
+            "signature": "constructor(string)",
+            "description": "Payable constructor description",
+            "parameterDecorators": [
+                {
+                    "name": "Arg",
+                    "description": "Arg description",
+                    "recommendedTypes": ["example"]
+                }
+            ]
+        }
+    ],
+    "functionDecorators": [
+        {
+            "signature": "viewFn(address)",
+            "name": "View function",
+            "description": "View function description",
+            "parameterDecorators": [
+                {
+                    "name": "Arg",
+                    "description": "Arg description",
+                    "recommendedTypes": ["example"]
+                }
+            ],
+            "returnDecorators": [
+                {
+                    "name": "Return value",
+                    "description": "Return value description",
+                    "solidityType": "string",
+                    "recommendedTypes": ["example"]
+                }
+            ],
+            "emittableEvents": ["ExampleEvent(address)"]
+        },
+        {
+            "signature": "pureFn(address)",
+            "name": "Pure function",
+            "description": "Pure function description",
+            "parameterDecorators": [
+                {
+                    "name": "Arg",
+                    "description": "Arg description",
+                    "recommendedTypes": ["example"]
+                }
+            ],
+            "returnDecorators": [
+                {
+                    "name": "Return value",
+                    "description": "Return value description",
+                    "solidityType": "string",
+                    "recommendedTypes": ["example"]
+                }
+            ],
+            "emittableEvents": ["ExampleEvent(address)"]
+        },
+        {
+            "signature": "modifyingFn(address)",
+            "name": "Modifying function",
+            "description": "Modifying function description",
+            "parameterDecorators": [
+                {
+                    "name": "Arg",
+                    "description": "Arg description",
+                    "recommendedTypes": ["example"]
+                }
+            ],
+            "returnDecorators": [
+                {
+                    "name": "Return value",
+                    "description": "Return value description",
+                    "solidityType": "string",
+                    "recommendedTypes": ["example"]
+                }
+            ],
+            "emittableEvents": ["ExampleEvent(address)"]
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+=== Fetch Contract Deployment Requests by Project ID and Filters
+Fetches stored contract deployment requests with their current status filtered by project ID and other filters.
+
+.Query Parameters
+[%collapsible]
+====
+[cols="1,1"]
+|===
+|Parameter |Description
+
+|`contractIds`
+|Comma separated list of contract IDs to filter by. Each list element act as an `OR` operator.
+
+|`contractTags`
+|Comma separated list of contract tags to filter by. Individual elements can contain multiple contract tags separated by
+`AND` to specify that contract must contain all of those tags, while individual list elements act as `OR` operator.
+
+*Example:* `contractTags=tag-1,tag-2` will fetch all contracts with either `tag-1` or `tag-2`, while
+`contractTags=tag-1 AND tag-2,tag-3` will fetch all contracts with both `tag-1` and `tag-2`, or with at least `tag-3`.
+
+|`contractImplements`
+|Comma separated list of implemented contract traits to filter by. Individual elements can contain multiple implemented
+contract traits separated by `AND` to specify that contract must contain all of those tags, while individual list
+elements act as `OR` operator.
+
+|`deployedOnly`
+|If set to `true`, only deployed contracts (with `status` equal to `SUCCESS` and non-null `contractAddress`) will be
+fetched.
+|===
+====
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractDeploymentRequestControllerApiTest/mustCorrectlyFetchContractDeploymentRequestsByProjectIdAndFilters/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractDeploymentRequestControllerApiTest/mustCorrectlyFetchContractDeploymentRequestsByProjectIdAndFilters/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.contract.deployment.model.response.ContractDeploymentRequestsResponse.adoc[]

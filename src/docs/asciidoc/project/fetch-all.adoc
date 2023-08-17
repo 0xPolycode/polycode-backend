@@ -1,0 +1,16 @@
+=== Fetch All Projects for Requesting User
+Fetches all projects for the requesting user.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyReturnAllProjectsForSomeUser/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyReturnAllProjectsForSomeUser/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.api.access.model.response.ProjectsResponse.adoc[]

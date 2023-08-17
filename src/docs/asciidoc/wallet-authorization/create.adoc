@@ -1,0 +1,29 @@
+=== Create Wallet Authorization Request
+Creates wallet authorization request with specified parameters. Parameters `redirect_url`, `message_to_sign`,
+`store_indefinitely`, `wallet_address`, `arbitrary_data`, `screen_config` and all its child fields are optional.
+`arbitrary_data` field can contain any desired JSON value. Wallet authorization request ID can be interpolated into the
+`redirect_url` by placing `${id}` placeholder in the place where request ID is desired in the URL. The placeholder must
+strictly have dollar sign and brackets to be interpolated, and only `id` field can be interpolated.
+
+If `message_to_sign` field is not set, then the message will be generated on backend. `store_indefinitely` field
+determines if the request should be readable only once. If it is not provided in the request, it will be set to `true`.
+
+*This request requires an API key present in the `X-API-KEY` header.*
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AuthorizationRequestControllerApiTest/mustCorrectlyCreateAuthorizationRequestWithRedirectUrl/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AuthorizationRequestControllerApiTest/mustCorrectlyCreateAuthorizationRequestWithRedirectUrl/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.wallet.authorization.model.request.CreateAuthorizationRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.wallet.authorization.model.response.AuthorizationRequestResponse.adoc[]

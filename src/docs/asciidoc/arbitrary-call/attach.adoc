@@ -1,0 +1,17 @@
+=== Attach Transaction Info to Contract Arbitrary Call Request
+Attaches transaction hash and caller wallet address to existing contract arbitrary call request. Once the transaction
+hash is attached to the request, any subsequent attempts to attach a new transaction hash will fail.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractArbitraryCallRequestControllerApiTest/mustCorrectlyAttachTransactionInfo/http-request.adoc[]
+====
+.Request Schema
+include::{snippets}/polycode.model.request.AttachTransactionInfoRequest.adoc[]
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractArbitraryCallRequestControllerApiTest/mustCorrectlyAttachTransactionInfo/http-response.adoc[]
+====

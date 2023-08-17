@@ -1,0 +1,16 @@
+=== Fetch Contract Deployment Requests by Project ID and Contract Alias
+Fetches contract deployment request for given project ID and contract alias.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractDeploymentRequestControllerApiTest/mustCorrectlyFetchContractDeploymentRequestByProjectIdAndAlias/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractDeploymentRequestControllerApiTest/mustCorrectlyFetchContractDeploymentRequestByProjectIdAndAlias/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.contract.deployment.model.response.ContractDeploymentRequestResponse.adoc[]

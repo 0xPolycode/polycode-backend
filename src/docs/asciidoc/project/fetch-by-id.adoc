@@ -1,0 +1,16 @@
+=== Fetch Project by ID
+Fetches project by ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyReturnProjectById/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyReturnProjectById/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.api.access.model.response.ProjectResponse.adoc[]

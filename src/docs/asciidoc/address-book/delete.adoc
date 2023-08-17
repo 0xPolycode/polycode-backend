@@ -1,0 +1,14 @@
+=== Delete Address Book Entry
+Deletes stored address book entry.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyDeleteAddressBookEntry/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyDeleteAddressBookEntry/http-response.adoc[]
+====

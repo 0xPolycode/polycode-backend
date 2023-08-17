@@ -1,0 +1,45 @@
+=== Create Contract Function Call Request
+Creates contract function call request with specified parameters. Parameters `redirect_url`, `caller_address`,
+`arbitrary_data`, `screen_config` and all its child fields are optional. `arbitrary_data` field can contain any desired
+JSON value. Contract function call request ID can be interpolated into the `redirect_url` by placing `${id}` placeholder
+in the place where request ID is desired in the URL. The placeholder must strictly have dollar sign and brackets to be
+interpolated, and only `id` field can be interpolated.
+
+Target contract can be specified by providing `deployed_contract_id`, `deployed_contract_alias` or `contract_address` in
+the request body. Exactly one of the mentioned values must be provided, otherwise the request will be considered
+invalid. The `deployed_contract_id` and `deployed_contract_alias` correspond to ID or alias of the contract which was
+deployed using the <<Contract Deployment Request API>>. If `contract_address` is used to specify target contract, then
+`deployed_contract_id` will have `null` value in the response.
+
+The `functionParams` field is an array of objects which must have `type` and `value` according to the table in
+section <<Available Function Argument Types>>.
+
+*This request requires an API key present in the `X-API-KEY` header.*
+
+.Request Example (via `deployed_contract_id`)
+[%collapsible]
+====
+include::{snippets}/ContractFunctionCallRequestControllerApiTest/mustCorrectlyCreateContractFunctionCallRequestViaDeployedContractId/http-request.adoc[]
+====
+.Request Example (via `deployed_contract_alias`)
+[%collapsible]
+====
+include::{snippets}/ContractFunctionCallRequestControllerApiTest/mustCorrectlyCreateContractFunctionCallRequestViaDeployedContractAlias/http-request.adoc[]
+====
+.Request Example (via `contract_address`)
+[%collapsible]
+====
+include::{snippets}/ContractFunctionCallRequestControllerApiTest/mustCorrectlyCreateContractFunctionCallRequestViaDeployedContractAddress/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractFunctionCallRequestControllerApiTest/mustCorrectlyCreateContractFunctionCallRequestViaDeployedContractId/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.contract.functioncall.model.request.CreateContractFunctionCallRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.contract.functioncall.model.response.ContractFunctionCallRequestResponse.adoc[]

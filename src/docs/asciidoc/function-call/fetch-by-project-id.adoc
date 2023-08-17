@@ -1,0 +1,31 @@
+=== Fetch Contract Function Call Requests by Project ID and Filters
+Fetches stored contract function call requests with their current status filtered by project ID and other filters.
+
+.Query Parameters
+[%collapsible]
+====
+[cols="1,1"]
+|===
+|Parameter |Description
+
+|`deployedContractId`
+|ID of the deployed contract to filter by.
+
+|`contractAddress`
+|Address of the contract to filter by.
+|===
+====
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractFunctionCallRequestControllerApiTest/mustCorrectlyFetchContractFunctionCallRequestsByProjectIdAndFilters/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractFunctionCallRequestControllerApiTest/mustCorrectlyFetchContractFunctionCallRequestsByProjectIdAndFilters/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.contract.functioncall.model.response.ContractFunctionCallRequestsResponse.adoc[]

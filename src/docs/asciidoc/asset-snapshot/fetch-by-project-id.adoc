@@ -1,0 +1,29 @@
+=== Fetch Asset Snapshot Requests by Project ID
+Fetches stored asset snapshot requests with their current status filtered by project ID.
+
+.Query Parameters
+[%collapsible]
+====
+[cols="1,1"]
+|===
+|Parameter |Description
+
+|`status`
+|List of comma-separated statuses for which asset snapshots will be fetched for specified project ID. Possible values
+are: `PENDING`, `SUCCESS` and `FAILED`.
+|===
+====
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AssetSnapshotControllerApiTest/mustReturnAssetSnapshotsForSomeProjectId/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AssetSnapshotControllerApiTest/mustReturnAssetSnapshotsForSomeProjectId/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.payout.model.response.AssetSnapshotsResponse.adoc[]

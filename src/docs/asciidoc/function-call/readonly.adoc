@@ -1,0 +1,48 @@
+=== Call Read-Only Contract Function Request
+Calls read-only contract function with specified parameters. Parameter `block_number` is optional.
+
+Target contract can be specified by providing `deployed_contract_id`, `deployed_contract_alias` or `contract_address` in
+the request body. Exactly one of the mentioned values must be provided, otherwise the request will be considered
+invalid. The `deployed_contract_id` and `deployed_contract_alias` correspond to ID or alias of the contract which was
+deployed using the <<Contract Deployment Request API>>. If `contract_address` is used to specify target contract, then
+`deployed_contract_id` will have `null` value in the response.
+
+The `functionParams` field is an array of objects which must have `type` and `value` according to the table in
+section <<Available Function Argument Types>>.
+
+The `outputParams` field is an array of output parameter types, which correspond to the type name according to the table
+in section <<Available Function Argument Types>>. Tuple types are constructed by providing an object instead of type
+name, for example `{"type": "tuple", "elems": ["uint", "string"]}` is a tuple with element types of `uint` and
+`string`. Tuple nesting is possible by providing the appropriate value in the `elem` array. Any array dimensions of
+the tuple must be expressed in its `type` field, for example `{"type": "tuple[]", "elems": ["uint", "string"]}`
+defines an array of tuples with element types of `uint` and `string`.
+
+*This request requires an API key present in the `X-API-KEY` header.*
+
+.Request Example (via `deployed_contract_id`)
+[%collapsible]
+====
+include::{snippets}/ContractReadonlyFunctionCallControllerApiTest/mustCorrectlyCallReadonlyContractFunctionViaDeployedContractId/http-request.adoc[]
+====
+.Request Example (via `deployed_contract_alias`)
+[%collapsible]
+====
+include::{snippets}/ContractReadonlyFunctionCallControllerApiTest/mustCorrectlyCallReadonlyContractFunctionViaDeployedContractAlias/http-request.adoc[]
+====
+.Request Example (via `contract_address`)
+[%collapsible]
+====
+include::{snippets}/ContractReadonlyFunctionCallControllerApiTest/mustCorrectlyCallReadonlyContractFunctionViaDeployedContractAddress/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractReadonlyFunctionCallControllerApiTest/mustCorrectlyCallReadonlyContractFunctionViaDeployedContractId/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.contract.readcall.model.request.ReadonlyFunctionCallRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.contract.readcall.model.response.ReadonlyFunctionCallResponse.adoc[]

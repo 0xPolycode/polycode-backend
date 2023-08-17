@@ -1,0 +1,16 @@
+=== Fetch Address Book Entry by ID
+Fetches stored address book entry by ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyFetchAddressBookEntryById/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyFetchAddressBookEntryById/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.wallet.addressbook.model.response.AddressBookEntryResponse.adoc[]

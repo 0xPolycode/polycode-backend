@@ -1,0 +1,29 @@
+=== Preview Import of Already Deployed Smart Contract
+Previews import of already deployed smart contract for the specified contract address and chain ID.
+
+.Query Parameters
+[%collapsible]
+====
+[cols="1,1"]
+|===
+|Parameter |Description
+
+|`customRpcUrl`
+|Optional custom RPC URL which will override the default RPC URL for the specified chain. Can be used to provide custom
+RPC URL for non-supported chains.
+|===
+====
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ImportContractControllerApiTest/mustCorrectlyPreviewSmartContractImport/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ImportContractControllerApiTest/mustCorrectlyPreviewSmartContractImport/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.contract.importing.model.response.ImportPreviewResponse.adoc[]

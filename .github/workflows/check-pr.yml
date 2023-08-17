@@ -1,0 +1,134 @@
+# This workflow will build a Java project with Gradle
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: Check pull request
+
+on: [ pull_request ]
+
+env:
+  JAVA_VERSION: '17'
+  JAVA_DISTRIBUTION: 'adopt'
+
+jobs:
+  code-control:
+    runs-on: ubuntu-latest
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres:13.4-alpine
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+          java-version: ${{ env.JAVA_VERSION }}
+      - name: Check Java version
+        run: java -version
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Set up Gradle cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Linter
+        run: ./gradlew ktlintCheck
+      - name: Code analysis
+        run: ./gradlew detekt
+  jvm-test:
+    runs-on: ubuntu-latest
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres:13.4-alpine
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+          java-version: ${{ env.JAVA_VERSION }}
+      - name: Check Java version
+        run: java -version
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Set up Gradle cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Build
+        run: ./gradlew clean build -x test -x integTest -x apiTest --stacktrace
+      - name: Unit tests
+        run: ./gradlew test
+      - name: Failed unit tests results
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit-test-results
+          path: build/reports/tests/test/
+      - name: Integration tests
+        run: ./gradlew integTest
+      - name: Failed integration tests results
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: integration-test-results
+          path: build/reports/tests/integTest/
+      - name: API tests
+        run: ./gradlew apiTest
+      - name: Failed API tests results
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-test-results
+          path: build/reports/tests/apiTest/
+      - name: Generate test coverage report
+        run: ./gradlew jacocoTestReport
+      - name: Verify test coverage minimum limit
+        run: ./gradlew jacocoTestCoverageVerification
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: build/reports/jacoco/report.xml
+          fail_ci_if_error: false

@@ -1,0 +1,17 @@
+=== Attach Transaction Info to ERC20 Lock Request
+Attaches transaction hash and caller wallet address to existing ERC20 lock request. Once the transaction hash is
+attached to the request, any subsequent attempts to attach a new transaction hash will fail.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/Erc20LockRequestControllerApiTest/mustCorrectlyAttachTransactionInfo/http-request.adoc[]
+====
+.Request Schema
+include::{snippets}/polycode.model.request.AttachTransactionInfoRequest.adoc[]
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/Erc20LockRequestControllerApiTest/mustCorrectlyAttachTransactionInfo/http-response.adoc[]
+====

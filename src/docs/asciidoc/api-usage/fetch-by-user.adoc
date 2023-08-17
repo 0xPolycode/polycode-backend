@@ -1,0 +1,18 @@
+=== Fetch API Usage by User
+Fetches API usage by user.
+
+*This endpoint requires `Authorization: Bearer JWT` header.*
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ApiUsageControllerApiTest/mustCorrectlyFetchApiUsageForUser/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ApiUsageControllerApiTest/mustCorrectlyFetchApiUsageForUser/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.api.usage.model.response.ApiUsagePeriodResponse.adoc[]

@@ -1,0 +1,23 @@
+=== Create Multi-Payment Template
+Creates multi-payment with specified parameters.
+
+If `asset_type` is set to `NATIVE`, then chain-native currency will be send (i.e. Ether) and then `token_address` must
+not be present. If `asset_type` is set to `TOKEN`, then `token_address` must be present.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyCreateMultiPaymentTemplate/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyCreateMultiPaymentTemplate/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.asset.multisend.model.request.CreateMultiPaymentTemplateRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.asset.multisend.model.response.MultiPaymentTemplateWithItemsResponse.adoc[]

@@ -1,0 +1,17 @@
+=== Fetch Asset Send Requests by Recipient Address
+Fetches stored asset send requests with their current status filtered by recipient address *which was specified at the
+moment of request creation*.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AssetSendRequestControllerApiTest/mustCorrectlyFetchAssetSendRequestsByRecipientAddress/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AssetSendRequestControllerApiTest/mustCorrectlyFetchAssetSendRequestsByRecipientAddress/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.asset.send.model.response.AssetSendRequestsResponse.adoc[]

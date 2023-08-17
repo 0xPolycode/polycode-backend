@@ -1,0 +1,99 @@
+Below table contains the list of all supported function argument types. Any type can be made into an array by appending
+square brackets to the end of the type (`[]`). Fixed-size arrays are also supported by inserting a number inside the
+square brackets to indicate the array size (e.g. `string[1]` is an array of exactly one `string` element).
+Multi-dimensional arrays can be made by appending multiple square brackets. All array elements must be of the same type
+- this means that all `tuple` arrays must have `tuple` elements with matching field element types in the correct
+order.
+
+.Array Examples
+[%collapsible]
+====
+[cols="1,1"]
+|===
+|Array type |JSON value example
+
+|`string[]`
+|`["a", "b"]`
+
+|`int[1][2]`
+|`[[1], [2]]`
+
+|`tuple[]`
+|`[ [{type: "string", "value": "a"}], [{"type": "string", "value": "b"}] ]`
+
+|===
+====
+
+[cols="1,1,1,1"]
+|===
+| Type name |JSON value type |Example value |Description
+
+|`tuple`
+|`{"type": string, "value": any}[]`
+|`[{"type": "string", "value": "example tuple"}, {"type": "bool", "value": true}]`
+|Array of objects which must contain `type` and `name` elements. The `type` value must be one of the supported function
+argument types from this table and the `value` must match the type's accepted format. Order of tuple elements is
+important and must be in the order in which the tuple elements are declared. Tuple nesting is supported to any
+arbitrary depth - simply use the `tuple` type and provide a valid tuple array for the `value` field.
+
+|`address`
+|`string`
+|`"0x0000000000000000000000000000000000000000"`
+|Wallet or contract address in hex format, with optional `0x` prefix.
+
+|`bool`
+|`boolean`
+|`true`
+|Boolean value, `true` or `false`.
+
+|`string`
+|`string`
+|`"example"`
+|Arbitrary string value.
+
+|`bytes`
+|`(number \| string)[]`
+|`[1, 2, "3"]`
+|Array of bytes of variable size. Elements can be either numbers or string representations of numbers in base 10.
+
+|`byte`
+|`number \| string`
+|`1`
+|Byte value. Can be either a number or a string representation of the number in base 10.
+
+|`uint`
+|`number \| string`
+|`1`
+|256-bit unsigned integer (alias for `uint256`). Can be either a number or a string representation of the number in
+base 10.
+
+|`uint8`, `uint16`, `uint24`, `uint32`, `uint40`, `uint48`, `uint56`, `uint64`, `uint72`, `uint80`, `uint88`, `uint96`,
+`uint104`, `uint112`, `uint120`, `uint128`, `uint136`, `uint144`, `uint152`, `uint160`, `uint168`, `uint176`, `uint184`,
+`uint192`, `uint200`, `uint208`, `uint216`, `uint224`, `uint232`, `uint240`, `uint248`, `uint256`
+|`number \| string`
+|`1`
+|Unsigned integer with specified bit precision. Can be either a number or a string representation of the number in base
+10.
+
+|`int`
+|`number \| string`
+|`1`
+|256-bit signed integer (alias for `int256`). Can be either a number or a string representation of the number in base
+10.
+
+|`int8`, `int16`, `int24`, `int32`, `int40`, `int48`, `int56`, `int64`, `int72`, `int80`, `int88`, `int96`, `int104`,
+`int112`, `int120`, `int128`, `int136`, `int144`, `int152`, `int160`, `int168`, `int176`, `int184`, `int192`, `int200`,
+`int208`, `int216`, `int224`, `int232`, `int240`, `int248`, `int256`
+|`number \| string`
+|`1`
+|Signed integer with specified bit precision. Can be either a number or a string representation of the number in base
+10.
+
+|`bytes1`, `bytes2`, `bytes3`, `bytes4`, `bytes5`, `bytes6`, `bytes7`, `bytes8`, `bytes9`, `bytes10`, `bytes11`,
+`bytes12`, `bytes13`, `bytes14`, `bytes15`, `bytes16`, `bytes17`, `bytes18`, `bytes19`, `bytes20`, `bytes21`,
+`bytes22`, `bytes23`, `bytes24`, `bytes25`, `bytes26`, `bytes27`, `bytes28`, `bytes29`, `bytes30`, `bytes31`, `bytes32`
+|`(number \| string)[]`
+|`[1, 2, "3"]`
+|Fixed-size byte array. The size of the provided array must match the specified type size. Elements can be either
+numbers or string representations of numbers in base 10.
+|===

@@ -1,0 +1,28 @@
+=== Fetch Asset Multi-Send Request by ID
+Fetches stored asset multi-send request with its current status.
+
+For token transfers, the request is considered successful if the attached approve and disperse transactions are
+confirmed on blockchain and all their data matches specified request parameters (correct `to` and `from` addresses,
+`amount`, matching `data` and `tx_hash`). If there are any mismatches between specified request data and state on
+blockchain, the request will be marked as failed. If there are no attached transaction hashes or if approve or disperse
+transactions for attached hashes are not yet mined on blockchain, request will be in pending state.
+
+If `approve_status` is `FAILED` or `PENDING` for token transfer request, then `disperse_status` and `disperse_tx` will
+be `null` until `approve_status` changes to `SUCCESS`.
+
+For native token transfers, only disperse transaction is considered when determining request status (both
+`approve_status` and `approve_tx` fields will be `null`).
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AssetMultiSendRequestControllerApiTest/mustCorrectlyFetchAssetMultiSendRequestForSomeToken/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AssetMultiSendRequestControllerApiTest/mustCorrectlyFetchAssetMultiSendRequestForSomeToken/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.asset.multisend.model.response.AssetMultiSendRequestResponse.adoc[]

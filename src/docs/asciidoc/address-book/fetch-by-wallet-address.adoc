@@ -1,0 +1,16 @@
+=== Fetch Address Book Entries
+Fetches stored address book entries for the specified wallet address.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyFetchAddressBookEntriesForWalletAddress/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyFetchAddressBookEntriesForWalletAddress/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.wallet.addressbook.model.response.AddressBookEntriesResponse.adoc[]

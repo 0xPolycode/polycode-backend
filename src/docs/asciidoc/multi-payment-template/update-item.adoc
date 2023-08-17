@@ -1,0 +1,20 @@
+=== Update Multi-Payment Template Item
+Updates stored multi-payment template item.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyUpdateItemForMultiPaymentTemplate/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyUpdateItemForMultiPaymentTemplate/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.asset.multisend.model.request.MultiPaymentTemplateItemRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.asset.multisend.model.response.MultiPaymentTemplateWithItemsResponse.adoc[]

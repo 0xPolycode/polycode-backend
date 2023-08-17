@@ -1,0 +1,16 @@
+=== Fetch Asset Balance Check Requests by Project ID
+Fetches stored asset balance check requests with their current status filtered by project ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AssetBalanceRequestControllerApiTest/mustCorrectlyFetchAssetBalanceRequestsByProjectId/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AssetBalanceRequestControllerApiTest/mustCorrectlyFetchAssetBalanceRequestsByProjectId/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.asset.balance.model.response.AssetBalanceRequestsResponse.adoc[]

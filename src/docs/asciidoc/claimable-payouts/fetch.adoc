@@ -1,0 +1,34 @@
+=== Fetch Claimable Payouts
+Fetches list of claimable payouts for the requesting user wallet address. The payouts are fetched for specified chain ID
+and payout manager contract.
+
+*This endpoint requires `Authorization: Bearer JWT` header.*
+
+.Query Parameters
+[%collapsible]
+====
+[cols="1,1"]
+|===
+|Parameter |Description
+
+|`chainId` *Required*
+|Chain ID for which to fetch claimable payouts.
+
+|`payoutManager` *Required*
+|Contract address of the payout manager contract which contains info about created payouts.
+|===
+====
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ClaimablePayoutsControllerApiTest/mustReturnPayoutsForSomeInvestor/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ClaimablePayoutsControllerApiTest/mustReturnPayoutsForSomeInvestor/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.payout.model.response.InvestorPayoutsResponse.adoc[]

@@ -1,0 +1,16 @@
+=== Fetch Multi-Payment Template
+Fetches stored multi-payment template by ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyFetchMultiPaymentTemplateById/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyFetchMultiPaymentTemplateById/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.asset.multisend.model.response.MultiPaymentTemplateWithItemsResponse.adoc[]

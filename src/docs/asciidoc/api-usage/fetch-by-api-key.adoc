@@ -1,0 +1,18 @@
+=== Fetch API Usage by API Key
+Fetches API usage for owner of the provided API key.
+
+*This request requires an API key present in the `X-API-KEY` header.*
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ApiUsageControllerApiTest/mustCorrectlyFetchApiUsageForApiKey/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ApiUsageControllerApiTest/mustCorrectlyFetchApiUsageForApiKey/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.api.usage.model.response.ApiUsagePeriodResponse.adoc[]

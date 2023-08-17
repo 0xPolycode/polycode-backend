@@ -1,0 +1,29 @@
+=== Create Contract Deployment Request
+Creates contract deployment request with specified parameters. Parameters `redirect_url`, `deployer_address`,
+`arbitrary_data`, `screen_config` and all its child fields are optional. `arbitrary_data` field can contain any desired
+JSON value. Contract deployment request ID can be interpolated into the `redirect_url` by placing `${id}` placeholder in
+the place where request ID is desired in the URL. The placeholder must strictly have dollar sign and brackets to be
+interpolated, and only `id` field can be interpolated.
+
+The `constructor_params` field is an array of objects which must have `type` and `value` according to the table in
+section <<Available Function Argument Types>>.
+
+*This request requires an API key present in the `X-API-KEY` header.*
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractDeploymentRequestControllerApiTest/mustCorrectlyCreateContractDeploymentRequest/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractDeploymentRequestControllerApiTest/mustCorrectlyCreateContractDeploymentRequest/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.contract.deployment.model.request.CreateContractDeploymentRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.contract.deployment.model.response.ContractDeploymentRequestResponse.adoc[]

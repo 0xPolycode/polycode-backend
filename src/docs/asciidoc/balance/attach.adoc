@@ -1,0 +1,17 @@
+=== Attach Wallet Address and Signed Message to Asset Balance Check Request
+Attaches wallet address and signed message to existing asset balance check request. Once the wallet address and signed
+message are attached to the request, any subsequent attempts to attach new values will fail.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AssetBalanceRequestControllerApiTest/mustCorrectlyAttachSignedMessage/http-request.adoc[]
+====
+.Request Schema
+include::{snippets}/polycode.model.request.AttachSignedMessageRequest.adoc[]
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AssetBalanceRequestControllerApiTest/mustCorrectlyAttachSignedMessage/http-response.adoc[]
+====

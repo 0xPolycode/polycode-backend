@@ -1,0 +1,14 @@
+=== Remove Address from Blacklist
+Removes specified address from the blacklist. Only application admin wallets can call this endpoint.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/BlacklistControllerApiTest/mustCorrectlyRemoveAddressFromBlacklistForAllowedUser/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/BlacklistControllerApiTest/mustCorrectlyRemoveAddressFromBlacklistForAllowedUser/http-response.adoc[]
+====

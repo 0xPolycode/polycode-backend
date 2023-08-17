@@ -1,0 +1,102 @@
+{
+    "contractName": "DummyContract",
+    "sourceName": "DummyContract.sol",
+    "bytecode": "0x0",
+    "deployedBytecode": "0x0",
+    "abi": [
+        {
+            "type": "constructor",
+            "stateMutability": "nonpayable",
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "type": "address",
+                    "name": "arg"
+                }
+            ]
+        },
+        {
+            "type": "constructor",
+            "stateMutability": "payable",
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "type": "string",
+                    "name": "arg"
+                }
+            ]
+        },
+        {
+            "type": "function",
+            "stateMutability": "view",
+            "name": "viewFn",
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "type": "address",
+                    "name": "arg"
+                }
+            ],
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "type": "bool",
+                    "name": ""
+                }
+            ]
+        },
+        {
+            "type": "function",
+            "stateMutability": "pure",
+            "name": "pureFn",
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "type": "address",
+                    "name": "arg"
+                }
+            ],
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "type": "bool",
+                    "name": ""
+                }
+            ]
+        },
+        {
+            "type": "function",
+            "name": "modifyingFn",
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "type": "address",
+                    "name": "arg"
+                }
+            ],
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "type": "bool",
+                    "name": ""
+                }
+            ]
+        },
+        {
+            "type": "event",
+            "name": "ExampleEvent",
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "type": "address",
+                    "name": "arg",
+                    "indexed": true
+                }
+            ]
+        },
+        {
+            "type": "receive",
+            "stateMutability": "payable"
+        }
+    ]
+}

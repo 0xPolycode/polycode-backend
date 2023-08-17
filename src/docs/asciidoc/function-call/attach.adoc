@@ -1,0 +1,17 @@
+=== Attach Transaction Info to Contract Function Call Request
+Attaches transaction hash and caller wallet address to existing contract function call request. Once the transaction
+hash is attached to the request, any subsequent attempts to attach a new transaction hash will fail.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractFunctionCallRequestControllerApiTest/mustCorrectlyAttachTransactionInfo/http-request.adoc[]
+====
+.Request Schema
+include::{snippets}/polycode.model.request.AttachTransactionInfoRequest.adoc[]
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractFunctionCallRequestControllerApiTest/mustCorrectlyAttachTransactionInfo/http-response.adoc[]
+====

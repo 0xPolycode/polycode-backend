@@ -1,0 +1,16 @@
+=== Fetch Project API Key
+Fetches project API key by project ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyReturnProjectApiKey/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyReturnProjectApiKey/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.api.access.model.response.ApiKeyResponse.adoc[]

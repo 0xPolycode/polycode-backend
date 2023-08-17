@@ -1,0 +1,21 @@
+=== Update Address Book Entry
+Updates address book entry with specified parameters. Parameters `phone_number` and `email` are optional. *Note: all
+non-optional parameters must be set. If optional parameters are set to `null`, then their values will be set to `null`.*
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyUpdateAddressBookEntry/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyUpdateAddressBookEntry/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.wallet.addressbook.model.request.CreateOrUpdateAddressBookEntryRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.wallet.addressbook.model.response.AddressBookEntryResponse.adoc[]

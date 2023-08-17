@@ -1,0 +1,18 @@
+=== Create Project
+Creates project with specified parameters.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyCreateProject/http-request.adoc[]
+====
+.Request Schema
+include::{snippets}/polycode.features.api.access.model.request.CreateProjectRequest.adoc[]
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyCreateProject/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.api.access.model.response.ProjectResponse.adoc[]

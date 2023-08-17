@@ -1,0 +1,148 @@
+= Polycode Documentation
+Version {version}, {date}
+:doctype: book
+:toc: left
+:sectnums:
+:toclevels: 2
+:source-highlighter: prettify
+:docinfo: shared
+:icons: font
+
+== Introduction
+This document contains generated documentation for Polycode. Polycode provides
+endpoints to verify user wallet ownership as well as endpoints to fetch data from blockchain for verified wallets.
+Source code is available on https://github.com/0xPolycode/polycode-backend[Github].
+
+include::src/docs/asciidoc/base-url.adoc[]
+
+== Wallet Authorization API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/wallet-authorization/create.adoc[]
+include::src/docs/asciidoc/wallet-authorization/fetch.adoc[]
+include::src/docs/asciidoc/wallet-authorization/fetch-by-project-id.adoc[]
+include::src/docs/asciidoc/wallet-authorization/attach.adoc[]
+
+== Asset Balance Checking API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/balance/create.adoc[]
+include::src/docs/asciidoc/balance/fetch.adoc[]
+include::src/docs/asciidoc/balance/fetch-by-project-id.adoc[]
+include::src/docs/asciidoc/balance/attach.adoc[]
+
+== Asset Send Request API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/send/create.adoc[]
+include::src/docs/asciidoc/send/fetch.adoc[]
+include::src/docs/asciidoc/send/fetch-by-project-id.adoc[]
+include::src/docs/asciidoc/send/fetch-by-sender.adoc[]
+include::src/docs/asciidoc/send/fetch-by-recipient.adoc[]
+include::src/docs/asciidoc/send/attach.adoc[]
+
+== Asset Multi-Send Request API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/multi-send/create.adoc[]
+include::src/docs/asciidoc/multi-send/fetch.adoc[]
+include::src/docs/asciidoc/multi-send/fetch-by-project-id.adoc[]
+include::src/docs/asciidoc/multi-send/fetch-by-sender.adoc[]
+include::src/docs/asciidoc/multi-send/attach-approve.adoc[]
+include::src/docs/asciidoc/multi-send/attach-disperse.adoc[]
+
+== Asset Snapshot Request API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/asset-snapshot/create.adoc[]
+include::src/docs/asciidoc/asset-snapshot/fetch.adoc[]
+include::src/docs/asciidoc/asset-snapshot/fetch-by-project-id.adoc[]
+
+== Claimable Payouts API
+Payout info endpoints are public and do not require `Authorization: Bearer JWT` header. Claimable payouts endpoint
+requires `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/payout-info/fetch-merkle-tree.adoc[]
+include::src/docs/asciidoc/payout-info/fetch-merkle-path.adoc[]
+include::src/docs/asciidoc/claimable-payouts/fetch.adoc[]
+
+== ERC20 Lock Request API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/lock/create.adoc[]
+include::src/docs/asciidoc/lock/fetch.adoc[]
+include::src/docs/asciidoc/lock/fetch-by-project-id.adoc[]
+include::src/docs/asciidoc/lock/attach.adoc[]
+
+== Deployable Contracts API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/deployable-contracts/fetch.adoc[]
+include::src/docs/asciidoc/deployable-contracts/fetch-manifest.adoc[]
+include::src/docs/asciidoc/deployable-contracts/fetch-artifact.adoc[]
+include::src/docs/asciidoc/deployable-contracts/fetch-info-markdown.adoc[]
+include::src/docs/asciidoc/deployable-contracts/fetch-all.adoc[]
+include::src/docs/asciidoc/deployable-contracts/fetch-all-manifests.adoc[]
+include::src/docs/asciidoc/deployable-contracts/fetch-all-artifacts.adoc[]
+include::src/docs/asciidoc/deployable-contracts/fetch-all-info-markdowns.adoc[]
+
+== Contract Interfaces API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/contract-interfaces/fetch.adoc[]
+include::src/docs/asciidoc/contract-interfaces/fetch-info-markdown.adoc[]
+include::src/docs/asciidoc/contract-interfaces/fetch-all.adoc[]
+include::src/docs/asciidoc/contract-interfaces/fetch-all-info-markdowns.adoc[]
+
+== Contract Deployment Request API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/deploy/create.adoc[]
+include::src/docs/asciidoc/deploy/import-preview.adoc[]
+include::src/docs/asciidoc/deploy/import.adoc[]
+include::src/docs/asciidoc/deploy/suggest-interfaces.adoc[]
+include::src/docs/asciidoc/deploy/add-interfaces.adoc[]
+include::src/docs/asciidoc/deploy/remove-interfaces.adoc[]
+include::src/docs/asciidoc/deploy/set-interfaces.adoc[]
+include::src/docs/asciidoc/deploy/fetch-by-id.adoc[]
+include::src/docs/asciidoc/deploy/fetch-by-project-id-alias.adoc[]
+include::src/docs/asciidoc/deploy/fetch-by-project-id.adoc[]
+include::src/docs/asciidoc/deploy/attach.adoc[]
+include::src/docs/asciidoc/deploy/delete-by-id.adoc[]
+
+== Contract Function Call Request API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/function-call/readonly.adoc[]
+include::src/docs/asciidoc/function-call/create.adoc[]
+include::src/docs/asciidoc/function-call/fetch.adoc[]
+include::src/docs/asciidoc/function-call/fetch-by-project-id.adoc[]
+include::src/docs/asciidoc/function-call/attach.adoc[]
+
+== Contract Arbitrary Call Request API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/arbitrary-call/create.adoc[]
+include::src/docs/asciidoc/arbitrary-call/fetch.adoc[]
+include::src/docs/asciidoc/arbitrary-call/fetch-by-project-id.adoc[]
+include::src/docs/asciidoc/arbitrary-call/attach.adoc[]
+
+== Public Address Book API
+All endpoints are public and do not require `Authorization: Bearer JWT` header. Endpoints to modify address book entries
+can be found in the internal API documentation.
+
+include::src/docs/asciidoc/address-book/fetch-by-id.adoc[]
+include::src/docs/asciidoc/address-book/fetch-by-wallet-address.adoc[]
+
+== Public Multi-Payment Template API
+All endpoints are public and do not require `Authorization: Bearer JWT` header. Endpoints to modify multi-payment
+templates can be found in the internal API documentation.
+
+include::src/docs/asciidoc/multi-payment-template/fetch.adoc[]
+include::src/docs/asciidoc/multi-payment-template/fetch-by-wallet-address.adoc[]
+
+== Available Function Argument Types
+include::src/docs/asciidoc/function-arg-types.adoc[]
+
+== Error Response
+include::src/docs/asciidoc/error-response.adoc[]

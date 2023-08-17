@@ -1,0 +1,16 @@
+=== Fetch Address Book Entry by Alias
+Fetches stored address book entry by alias.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyFetchAddressBookEntryByAlias/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyFetchAddressBookEntryByAlias/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.wallet.addressbook.model.response.AddressBookEntryResponse.adoc[]

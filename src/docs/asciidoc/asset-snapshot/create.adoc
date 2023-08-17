@@ -1,0 +1,23 @@
+=== Create Asset Snapshot Request
+Creates asset snapshot request with specified parameters. The asset snapshot will take some time to complete, so this
+endpoint will only return the ID of the created snapshot.
+
+*This request requires an API key present in the `X-API-KEY` header.*
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AssetSnapshotControllerApiTest/mustSuccessfullyCreateAssetSnapshotForSomeAsset/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AssetSnapshotControllerApiTest/mustSuccessfullyCreateAssetSnapshotForSomeAsset/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.payout.model.request.CreateAssetSnapshotRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.payout.model.response.CreateAssetSnapshotResponse.adoc[]

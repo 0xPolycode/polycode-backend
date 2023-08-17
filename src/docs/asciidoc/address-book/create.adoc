@@ -1,0 +1,20 @@
+=== Create Address Book Entry
+Creates address book entry with specified parameters. Parameters `phone_number` and `email` are optional.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyCreateAddressBookEntry/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AddressBookControllerApiTest/mustCorrectlyCreateAddressBookEntry/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.wallet.addressbook.model.request.CreateOrUpdateAddressBookEntryRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.wallet.addressbook.model.response.AddressBookEntryResponse.adoc[]

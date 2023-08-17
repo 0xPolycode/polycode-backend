@@ -1,0 +1,14 @@
+=== Fetch Contract Interface `info.md` by ID
+Fetches `info.md` file for contract interface by interface ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractInterfacesControllerApiTest/mustCorrectlyFetchContractInterfaceInfoMarkdownById/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractInterfacesControllerApiTest/mustCorrectlyFetchContractInterfaceInfoMarkdownById/http-response.adoc[]
+====

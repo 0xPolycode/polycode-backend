@@ -1,0 +1,16 @@
+=== Delete Contract Deployment Request by ID
+Deletes created contract deployment request by ID. Only the request creator can delete the contract deployment request.
+
+*This request requires an API key present in the `X-API-KEY` header.*
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractDeploymentRequestControllerApiTest/mustCorrectlyDeleteContractDeploymentRequestById/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractDeploymentRequestControllerApiTest/mustCorrectlyDeleteContractDeploymentRequestById/http-response.adoc[]
+====

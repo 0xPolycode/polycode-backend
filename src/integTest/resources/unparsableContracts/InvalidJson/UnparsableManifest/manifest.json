@@ -1,0 +1,7 @@
+{
+    "tags": ["tag.unparsable"],
+    "implements": ["trait.unparsable"],
+    "eventDecoyrators": [],
+    "constructorDecoyrators": [],
+    "functionDecoyrators": []
+}

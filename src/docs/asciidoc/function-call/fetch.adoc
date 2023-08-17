@@ -1,0 +1,20 @@
+=== Fetch Contract Function Call Request by ID
+Fetches stored contract function call request with its current status. The request is considered successful if the
+attached transaction is confirmed on blockchain and all its data matches specified request parameters (correct `to` and
+`from` addresses, `amount`, matching `data` and `tx_hash`). If there are any mismatches between specified request data
+and state on blockchain, the request will be marked as failed. If there is no attached transaction hash or if
+transaction for attached hash is not yet mined on blockchain, request will be in pending state.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractFunctionCallRequestControllerApiTest/mustCorrectlyFetchContractFunctionCallRequest/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractFunctionCallRequestControllerApiTest/mustCorrectlyFetchContractFunctionCallRequest/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.contract.functioncall.model.response.ContractFunctionCallRequestResponse.adoc[]

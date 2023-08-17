@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  polycode-postgres:
+    container_name: polycode-postgres
+    image: "postgres:13.4-alpine"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+  contract-manifest-service:
+    container_name: contract-manifest-service
+    image: "polyflowdev/contracts-manifest-service:0.8.2"
+    ports:
+      - "42070:42070"

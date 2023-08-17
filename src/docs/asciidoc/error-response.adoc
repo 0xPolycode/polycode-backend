@@ -1,0 +1,22 @@
+All endpoints can return an error response. This section contains an example error response, error response schema and
+a table of all possible error codes.
+
+.Error Response Example
+[%collapsible]
+====
+[source,http,options="nowrap"]
+----
+HTTP/1.1 401 UNAUTHORIZED
+Content-Type: application/json
+
+{
+  "error_code" : "BAD_AUTHENTICATION",
+  "message" : "Provided authentication header has invalid format"
+}
+----
+====
+
+.Error Response Schema
+include::{snippets}/polycode.exception.ErrorResponse.adoc[]
+
+include::{snippets}/polycode.exception.ErrorCode.adoc[]

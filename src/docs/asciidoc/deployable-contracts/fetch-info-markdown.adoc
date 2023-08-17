@@ -1,0 +1,27 @@
+=== Fetch Deployable Contract `info.md` by ID
+Fetches `info.md` file for deployable contract by contract ID.
+
+.Query Parameters
+[%collapsible]
+====
+[cols="1,1"]
+|===
+|Parameter |Description
+
+|`projectId`
+|Project ID under which to search for imported contract decorator ID. Imported contract decorators can potentially have
+same IDs, so this query parameter is used to distinguish between them.
+|===
+====
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ContractDecoratorControllerApiTest/mustCorrectlyFetchContractInfoMarkdown/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ContractDecoratorControllerApiTest/mustCorrectlyFetchContractInfoMarkdown/http-response.adoc[]
+====

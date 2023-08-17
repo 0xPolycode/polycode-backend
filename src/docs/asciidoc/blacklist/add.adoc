@@ -1,0 +1,14 @@
+=== Add Address to Blacklist
+Adds specified address to the blacklist. Only application admin wallets can call this endpoint.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/BlacklistControllerApiTest/mustCorrectlyAddAddressToBlacklistForAllowedUser/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/BlacklistControllerApiTest/mustCorrectlyAddAddressToBlacklistForAllowedUser/http-response.adoc[]
+====

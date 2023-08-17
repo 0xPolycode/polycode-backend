@@ -1,0 +1,21 @@
+=== Remove Interfaces From Imported Smart Contract by Contract Deployment Request ID
+Removes specified interfaces from the imported smart contract. Interfaces can only be removed from imported contracts
+for which the contract decorator was not specified during the import process.
+
+*This request requires an API key present in the `X-API-KEY` header.*
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ImportContractControllerApiTest/mustCorrectlyRemoveInterfacesFromImportedSmartContractWhenContractDecoratorIsNotSpecified/http-request.adoc[]
+====
+.Request Schema
+include::{snippets}/polycode.features.contract.interfaces.model.request.ImportedContractInterfacesRequest.adoc[]
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ImportContractControllerApiTest/mustCorrectlyRemoveInterfacesFromImportedSmartContractWhenContractDecoratorIsNotSpecified/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.contract.deployment.model.response.ContractDeploymentRequestResponse.adoc[]

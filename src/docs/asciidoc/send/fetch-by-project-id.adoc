@@ -1,0 +1,16 @@
+=== Fetch Asset Send Requests by Project ID
+Fetches stored asset send requests with their current status filtered by project ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AssetSendRequestControllerApiTest/mustCorrectlyFetchAssetSendRequestsByProjectId/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AssetSendRequestControllerApiTest/mustCorrectlyFetchAssetSendRequestsByProjectId/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.asset.send.model.response.AssetSendRequestsResponse.adoc[]

@@ -1,0 +1,18 @@
+=== Delete Multi-Payment Template Item
+Delete stored multi-payment template item.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyDeleteItemForMultiPaymentTemplate/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/MultiPaymentTemplateControllerApiTest/mustCorrectlyDeleteItemForMultiPaymentTemplate/http-response.adoc[]
+====
+
+Schemas:
+
+.Response Schema
+include::{snippets}/polycode.features.asset.multisend.model.response.MultiPaymentTemplateWithItemsResponse.adoc[]

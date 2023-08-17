@@ -1,0 +1,16 @@
+=== Fetch Wallet Authorization Requests by Project ID
+Fetches stored wallet authorization requests with their current status filtered by project ID.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/AuthorizationRequestControllerApiTest/mustCorrectlyFetchAuthorizationRequestsByProjectId/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/AuthorizationRequestControllerApiTest/mustCorrectlyFetchAuthorizationRequestsByProjectId/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/polycode.features.wallet.authorization.model.response.AuthorizationRequestsResponse.adoc[]
