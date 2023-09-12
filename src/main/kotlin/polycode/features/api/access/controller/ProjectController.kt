@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import polycode.config.binding.annotation.ApiKeyBinding
 import polycode.config.binding.annotation.UserIdentifierBinding
 import polycode.exception.ApiKeyAlreadyExistsException
 import polycode.exception.ResourceNotFoundException
@@ -15,6 +16,7 @@ import polycode.features.api.access.model.request.CreateProjectRequest
 import polycode.features.api.access.model.response.ApiKeyResponse
 import polycode.features.api.access.model.response.ProjectResponse
 import polycode.features.api.access.model.response.ProjectsResponse
+import polycode.features.api.access.model.result.Project
 import polycode.features.api.access.model.result.UserIdentifier
 import polycode.features.api.access.service.ProjectService
 import polycode.features.api.analytics.service.AnalyticsService
@@ -44,6 +46,13 @@ class ProjectController(
 
         val project = projectService.createProject(userIdentifier, params)
 
+        return ResponseEntity.ok(ProjectResponse(project))
+    }
+
+    @GetMapping("/v1/projects/by-api-key")
+    fun getByApiKey(
+        @ApiKeyBinding project: Project
+    ): ResponseEntity<ProjectResponse> {
         return ResponseEntity.ok(ProjectResponse(project))
     }
 

@@ -37,7 +37,8 @@ object ForcedPolycodeJooqTypes {
         "USER_ID",
         "MERKLE_TREE_ROOT_ID",
         "MERKLE_TREE_LEAF_ID",
-        "ASSET_SNAPSHOT_ID"
+        "ASSET_SNAPSHOT_ID",
+        "WALLET_LOGIN_REQUEST_ID"
     )
 
     val types = listOf(

@@ -1,0 +1,20 @@
+=== Create Wallet Login Request
+Creates wallet login request for specified wallet address.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/WalletLoginRequestControllerApiTest/mustCorrectlyCreateWalletLoginRequest/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/WalletLoginRequestControllerApiTest/mustCorrectlyCreateWalletLoginRequest/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.wallet.login.model.request.CreateWalletLoginRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.wallet.login.model.response.WalletLoginRequestResponse.adoc[]

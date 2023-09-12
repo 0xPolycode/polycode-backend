@@ -1,0 +1,18 @@
+=== Fetch Project by API Key
+Fetches project by API key.
+
+*This request requires an API key present in the `X-API-KEY` header.*
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyReturnProjectByApiKey/http-request.adoc[]
+====
+
+.Response Example
+[%collapsible]
+====
+include::{snippets}/ProjectControllerApiTest/mustCorrectlyReturnProjectByApiKey/http-response.adoc[]
+====
+.Response Schema
+include::{snippets}/dev3.blockchainapiservice.model.response.ProjectResponse.adoc[]

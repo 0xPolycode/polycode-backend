@@ -29,7 +29,8 @@ class ApplicationProperties {
 @ConfigurationProperties(prefix = "polycode.jwt")
 data class JwtProperties(
     val privateKey: RSAPrivateCrtKey,
-    val tokenValidity: Duration
+    val tokenValidity: Duration,
+    val walletLoginRequestValidity: Duration
 )
 
 @ConstructorBinding

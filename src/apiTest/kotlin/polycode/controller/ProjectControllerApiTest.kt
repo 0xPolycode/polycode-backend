@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import polycode.ControllerTestBase
 import polycode.TestData
+import polycode.config.CustomHeaders
 import polycode.exception.ErrorCode
 import polycode.features.api.access.model.response.ApiKeyResponse
 import polycode.features.api.access.model.response.ProjectResponse
@@ -118,6 +119,73 @@ class ProjectControllerApiTest : ControllerTestBase() {
             expectThat(storedProject.createdAt.value)
                 .isCloseTo(response.createdAt, WITHIN_TIME_TOLERANCE)
             expectThat(storedProject.createdAt.value)
+                .isCloseToUtcNow(WITHIN_TIME_TOLERANCE)
+        }
+    }
+
+    @Test
+    @WithMockUser
+    fun mustCorrectlyReturnProjectByApiKey() {
+        val userIdentifier = UserWalletAddressIdentifier(
+            id = UserId(UUID.randomUUID()),
+            walletAddress = WalletAddress(HardhatTestContainer.ACCOUNT_ADDRESS_1)
+        )
+
+        suppose("some user identifier exists in database") {
+            userIdentifierRepository.store(userIdentifier)
+        }
+
+        val project = Project(
+            id = ProjectId(UUID.randomUUID()),
+            ownerId = userIdentifier.id,
+            baseRedirectUrl = BaseUrl("base-redirect-url"),
+            chainId = TestData.CHAIN_ID,
+            customRpcUrl = "custom-rpc-url",
+            createdAt = UtcDateTime(OffsetDateTime.now())
+        )
+
+        suppose("some project exists in database") {
+            projectRepository.store(project)
+        }
+
+        val apiKey = ApiKey(
+            id = ApiKeyId(UUID.randomUUID()),
+            projectId = project.id,
+            apiKey = "api-key",
+            createdAt = UtcDateTime(OffsetDateTime.now())
+        )
+
+        suppose("some API key exists in database") {
+            apiKeyRepository.store(apiKey)
+        }
+
+        val response = suppose("request to fetch project by api key is made") {
+            val response = mockMvc.perform(
+                MockMvcRequestBuilders.get("/v1/projects/by-api-key")
+                    .header(CustomHeaders.API_KEY_HEADER, "api-key")
+            )
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andReturn()
+
+            objectMapper.readValue(response.response.contentAsString, ProjectResponse::class.java)
+        }
+
+        verify("correct response is returned") {
+            expectThat(response)
+                .isEqualTo(
+                    ProjectResponse(
+                        id = project.id,
+                        ownerId = project.ownerId,
+                        baseRedirectUrl = project.baseRedirectUrl.value,
+                        chainId = project.chainId.value,
+                        customRpcUrl = project.customRpcUrl,
+                        createdAt = response.createdAt
+                    )
+                )
+
+            expectThat(response.createdAt)
+                .isCloseTo(project.createdAt.value, WITHIN_TIME_TOLERANCE)
+            expectThat(response.createdAt)
                 .isCloseToUtcNow(WITHIN_TIME_TOLERANCE)
         }
     }

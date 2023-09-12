@@ -276,3 +276,13 @@ class AbiDecodingException(types: List<AbiType>, cause: Throwable) : ServiceExce
         private const val serialVersionUID: Long = -5755478462711202378L
     }
 }
+
+class WalletLoginFailedException(message: String) : ServiceException(
+    errorCode = ErrorCode.BAD_AUTHENTICATION,
+    httpStatus = HttpStatus.UNAUTHORIZED,
+    message = message
+) {
+    companion object {
+        private const val serialVersionUID: Long = 2595848893329393870L
+    }
+}

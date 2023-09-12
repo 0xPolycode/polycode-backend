@@ -82,6 +82,32 @@ class ProjectControllerTest : TestBase() {
     }
 
     @Test
+    fun mustCorrectlyGetProjectByApiKey() {
+        val result = Project(
+            id = ProjectId(UUID.randomUUID()),
+            ownerId = UserId(UUID.randomUUID()),
+            baseRedirectUrl = BaseUrl("base-redirect-url"),
+            chainId = TestData.CHAIN_ID,
+            customRpcUrl = "custom-rpc-url",
+            createdAt = CREATED_AT
+        )
+
+        val service = mock<ProjectService>()
+        val analyticsService = mock<AnalyticsService>()
+
+        val controller = ProjectController(service, analyticsService)
+
+        verify("controller returns correct response") {
+            val response = controller.getByApiKey(result)
+
+            JsonSchemaDocumentation.createSchema(response.body!!.javaClass)
+
+            expectThat(response)
+                .isEqualTo(ResponseEntity.ok(ProjectResponse(result)))
+        }
+    }
+
+    @Test
     fun mustCorrectlyGetProjectById() {
         val result = Project(
             id = ProjectId(UUID.randomUUID()),

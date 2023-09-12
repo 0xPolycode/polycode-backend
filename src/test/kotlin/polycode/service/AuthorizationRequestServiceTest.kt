@@ -765,7 +765,7 @@ class AuthorizationRequestServiceTest : TestBase() {
         val signedMessage = SignedMessage("signed-message")
         val authorizationRequestRepository = mock<AuthorizationRequestRepository>()
 
-        suppose("signed message will be attached") {
+        suppose("signed message will not be attached") {
             call(authorizationRequestRepository.setSignedMessage(uuid, walletAddress, signedMessage))
                 .willReturn(false)
         }

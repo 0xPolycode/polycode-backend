@@ -19,9 +19,9 @@ import polycode.generated.jooq.enums.UserIdentifierType
 import polycode.generated.jooq.id.UserId
 import polycode.service.UtcDateTimeProvider
 import polycode.service.UuidProvider
+import polycode.util.Either
 import polycode.util.WalletAddress
 import polyflow.generated.jooq.id.PolyflowUserId
-import java.util.UUID
 
 class UserIdentifierResolver(
     private val uuidProvider: UuidProvider,
@@ -42,63 +42,55 @@ class UserIdentifierResolver(
         nativeWebRequest: NativeWebRequest,
         binderFactory: WebDataBinderFactory?
     ): UserIdentifier {
-        val principal = (SecurityContextHolder.getContext().authentication?.principal as? String)
+        @Suppress("UNCHECKED_CAST")
+        val principal = (SecurityContextHolder.getContext().authentication?.principal as? Either<UserId, WalletAddress>)
 
-        return principal?.let { attemptWalletAddressLogin(it) }
-            ?: principal?.let { attemptPolyflowUserIdLogin(it) }
+        return principal?.mapRight { attemptWalletAddressLogin(it) }
+            ?: principal?.mapLeft { attemptPolyflowUserIdLogin(it) }
             ?: throw BadAuthenticationException()
     }
 
-    private fun attemptWalletAddressLogin(principal: String): UserIdentifier? =
-        try {
-            val walletAddress = WalletAddress(principal)
+    private fun attemptWalletAddressLogin(walletAddress: WalletAddress): UserIdentifier =
+        userIdentifierRepository.getByWalletAddress(walletAddress)
+            ?: userIdentifierRepository.store(
+                UserWalletAddressIdentifier(
+                    id = uuidProvider.getUuid(UserId),
+                    walletAddress = walletAddress
+                )
+            )
 
-            userIdentifierRepository.getByWalletAddress(walletAddress)
+    private fun attemptPolyflowUserIdLogin(userId: UserId): UserIdentifier? {
+        val polyflowUserId = PolyflowUserId(userId.value)
+
+        return polyflowUserRepository.getById(polyflowUserId)?.let { polyflowUser ->
+            val localUser = userIdentifierRepository
+                .getByUserIdentifier(userId.value.toString(), UserIdentifierType.POLYFLOW_USER_ID)
                 ?: userIdentifierRepository.store(
-                    UserWalletAddressIdentifier(
+                    UserPolyflowAccountIdIdentifier(
                         id = uuidProvider.getUuid(UserId),
-                        walletAddress = walletAddress
+                        polyflowId = polyflowUserId
                     )
                 )
-        } catch (e: NumberFormatException) {
-            null
-        }
+            val now = utcDateTimeProvider.getUtcDateTime()
+            val apiLimits = apiRateLimitRepository.getCurrentApiUsagePeriodLimits(localUser.id, now)
 
-    private fun attemptPolyflowUserIdLogin(principal: String): UserIdentifier? =
-        try {
-            val polyflowUserId = PolyflowUserId(UUID.fromString(principal))
+            if (
+                apiLimits == null ||
+                apiLimits.allowedReadRequests != polyflowUser.monthlyReadRequests ||
+                apiLimits.allowedWriteRequests != polyflowUser.monthlyWriteRequests
+            ) {
+                val newLimits = ApiUsageLimit(
+                    userId = localUser.id,
+                    allowedWriteRequests = polyflowUser.monthlyWriteRequests,
+                    allowedReadRequests = polyflowUser.monthlyReadRequests,
+                    startDate = now.atMonthStart(),
+                    endDate = now.atMonthEnd()
+                )
 
-            polyflowUserRepository.getById(polyflowUserId)?.let { polyflowUser ->
-                val localUser = userIdentifierRepository
-                    .getByUserIdentifier(principal, UserIdentifierType.POLYFLOW_USER_ID)
-                    ?: userIdentifierRepository.store(
-                        UserPolyflowAccountIdIdentifier(
-                            id = uuidProvider.getUuid(UserId),
-                            polyflowId = polyflowUserId
-                        )
-                    )
-                val now = utcDateTimeProvider.getUtcDateTime()
-                val apiLimits = apiRateLimitRepository.getCurrentApiUsagePeriodLimits(localUser.id, now)
-
-                if (
-                    apiLimits == null ||
-                    apiLimits.allowedReadRequests != polyflowUser.monthlyReadRequests ||
-                    apiLimits.allowedWriteRequests != polyflowUser.monthlyWriteRequests
-                ) {
-                    val newLimits = ApiUsageLimit(
-                        userId = localUser.id,
-                        allowedWriteRequests = polyflowUser.monthlyWriteRequests,
-                        allowedReadRequests = polyflowUser.monthlyReadRequests,
-                        startDate = now.atMonthStart(),
-                        endDate = now.atMonthEnd()
-                    )
-
-                    apiRateLimitRepository.createNewFutureUsageLimits(localUser.id, now, listOf(newLimits))
-                }
-
-                localUser
+                apiRateLimitRepository.createNewFutureUsageLimits(localUser.id, now, listOf(newLimits))
             }
-        } catch (e: IllegalArgumentException) {
-            null
+
+            localUser
         }
+    }
 }

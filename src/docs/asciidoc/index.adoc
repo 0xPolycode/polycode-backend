@@ -15,6 +15,13 @@ Source code is available on https://github.com/0xPolycode/polycode-backend[Githu
 
 include::src/docs/asciidoc/base-url.adoc[]
 
+== Project API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+The rest of the project API endpoints are described in the internal API docs.
+
+include::src/docs/asciidoc/project/fetch-by-api-key.adoc[]
+
 == Wallet Authorization API
 All endpoints are public and do not require `Authorization: Bearer JWT` header.
 

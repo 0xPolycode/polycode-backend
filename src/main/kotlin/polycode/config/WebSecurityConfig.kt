@@ -81,6 +81,8 @@ class WebSecurityConfig(private val objectMapper: ObjectMapper) {
             .antMatchers("/docs/index.html").permitAll()
             .antMatchers("/docs/internal.html").permitAll()
             .antMatchers("/v1/**").permitAll()
+            .antMatchers("/v1/wallet-login/**").permitAll()
+            .antMatchers("/v1/projects/by-api-key").permitAll()
             .antMatchers("/v1/projects/**").authenticated()
             .antMatchers("/v1/address-book/**").authenticated()
             .antMatchers(HttpMethod.GET, "/v1/address-book/**").permitAll()

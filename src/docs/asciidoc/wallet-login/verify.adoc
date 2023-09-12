@@ -1,0 +1,21 @@
+=== Verify Wallet Login
+Attaches signed message to existing wallet login request. If signed message is valid, JWT token is returned which can be
+used for authorization.
+
+.Request Example
+[%collapsible]
+====
+include::{snippets}/WalletLoginRequestControllerApiTest/mustCorrectlyVerifyWalletLoginRequest/http-request.adoc[]
+====
+.Response Example
+[%collapsible]
+====
+include::{snippets}/WalletLoginRequestControllerApiTest/mustCorrectlyVerifyWalletLoginRequest/http-response.adoc[]
+====
+
+Schemas:
+
+.Request Schema
+include::{snippets}/polycode.features.wallet.login.model.request.WalletLoginSignedMessageRequest.adoc[]
+.Response Schema
+include::{snippets}/polycode.features.wallet.login.model.response.JwtTokenResponse.adoc[]

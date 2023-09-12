@@ -7,7 +7,7 @@ import polycode.generated.jooq.id.UserId
 import polycode.util.WalletAddress
 
 interface UserIdentifierRepository {
-    fun store(userIdentifier: UserIdentifier): UserIdentifier
+    fun <T : UserIdentifier> store(userIdentifier: T): T
     fun getById(id: UserId): UserIdentifier?
     fun getByUserIdentifier(userIdentifier: String, identifierType: UserIdentifierType): UserIdentifier?
 

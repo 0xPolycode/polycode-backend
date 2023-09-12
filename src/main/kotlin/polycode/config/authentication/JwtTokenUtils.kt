@@ -6,18 +6,26 @@ import io.jsonwebtoken.JwtException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import polycode.exception.JwtTokenException
+import polycode.generated.jooq.id.UserId
+import polycode.util.Either
+import polycode.util.Left
+import polycode.util.Right
 import polycode.util.UtcDateTime
+import polycode.util.WalletAddress
 import java.security.interfaces.RSAPrivateKey
 import java.security.interfaces.RSAPublicKey
 import java.util.Date
+import java.util.UUID
 import kotlin.time.Duration
 
 object JwtTokenUtils {
 
     private const val ID_KEY = "id"
     private const val EMAIL_KEY = "email"
-    private const val JWT_SUBJECT = "Polyflow"
+    private const val POLYFLOW_JWT_SUBJECT = "Polyflow"
+    private const val POLYCODE_JWT_SUBJECT = "Polycode"
 
+    @Suppress("ThrowsCount")
     fun decodeToken(token: String, publicKey: RSAPublicKey): JwtAuthToken {
         try {
             val parser = Jwts.parserBuilder()
@@ -30,28 +38,37 @@ object JwtTokenUtils {
                 throw JwtTokenException("JWT token expired")
             }
 
-            val userId = claims.getClaim(ID_KEY) { it }
-            val email = claims.getClaim(EMAIL_KEY) { it }
+            val (id: Either<UserId, WalletAddress>, email) = when (claims.body.subject) {
+                POLYFLOW_JWT_SUBJECT -> Pair(
+                    claims.getClaim(ID_KEY) { Left(UserId(UUID.fromString(it))) },
+                    claims.getClaim(EMAIL_KEY) { it }
+                )
+
+                POLYCODE_JWT_SUBJECT -> Pair(claims.getClaim(ID_KEY) { Right(WalletAddress(it)) }, null)
+                else -> throw JwtTokenException("Unsupported JWT subject")
+            }
 
             return JwtAuthToken(
                 token = token,
-                id = userId,
+                id = id,
                 email = email,
                 validUntil = UtcDateTime.ofInstant(expiration.toInstant())
             )
         } catch (_: JwtException) {
             throw JwtTokenException("Could not validate JWT token")
+        } catch (_: IllegalArgumentException) {
+            throw JwtTokenException("Invalid user ID in JWT token")
+        } catch (_: NumberFormatException) {
+            throw JwtTokenException("Invalid wallet address in JWT token")
         }
     }
 
-    // TODO use for wallet login
-    fun encodeToken(id: String, email: String, privateKey: RSAPrivateKey, tokenValidity: Duration): JwtAuthToken {
+    fun encodeToken(walletAddress: WalletAddress, privateKey: RSAPrivateKey, tokenValidity: Duration): JwtAuthToken {
         val issuedAt = Date()
         val validUntil = Date.from(issuedAt.toInstant().plusMillis(tokenValidity.inWholeMilliseconds))
         val token = Jwts.builder()
-            .setSubject(JWT_SUBJECT)
-            .claim(ID_KEY, id)
-            .claim(EMAIL_KEY, email)
+            .setSubject(POLYCODE_JWT_SUBJECT)
+            .claim(ID_KEY, walletAddress.rawValue)
             .signWith(privateKey, SignatureAlgorithm.RS256)
             .setIssuedAt(issuedAt)
             .setExpiration(validUntil)
@@ -59,8 +76,8 @@ object JwtTokenUtils {
 
         return JwtAuthToken(
             token = token,
-            id = id,
-            email = email,
+            id = Right(walletAddress),
+            email = null,
             validUntil = UtcDateTime.ofInstant(validUntil.toInstant())
         )
     }

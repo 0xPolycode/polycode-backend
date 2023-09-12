@@ -14,6 +14,7 @@ import polycode.features.api.access.model.result.UserWalletAddressIdentifier
 import polycode.features.api.access.repository.UserIdentifierRepository
 import polycode.generated.jooq.id.UserId
 import polycode.service.UuidProvider
+import polycode.util.Right
 import polycode.util.WalletAddress
 import java.util.UUID
 
@@ -76,7 +77,7 @@ class UserIdentifierResolverTest : TestBase() { // TODO more tests
 
         suppose("authentication principal will some wallet address") {
             call(authentication.principal)
-                .willReturn(walletAddress.rawValue)
+                .willReturn(Right(walletAddress))
         }
 
         val securityContext = mock<SecurityContext>()
@@ -113,7 +114,7 @@ class UserIdentifierResolverTest : TestBase() { // TODO more tests
 
         suppose("authentication principal will some wallet address") {
             call(authentication.principal)
-                .willReturn(walletAddress.rawValue)
+                .willReturn(Right(walletAddress))
         }
 
         val securityContext = mock<SecurityContext>()

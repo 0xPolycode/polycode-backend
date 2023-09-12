@@ -20,7 +20,8 @@ class JooqUserIdentifierRepository(private val dslContext: DSLContext) : UserIde
 
     companion object : KLogging()
 
-    override fun store(userIdentifier: UserIdentifier): UserIdentifier {
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : UserIdentifier> store(userIdentifier: T): T {
         logger.info { "Store user identifier: $userIdentifier" }
         val record = UserIdentifierRecord(
             id = userIdentifier.id,
@@ -28,7 +29,7 @@ class JooqUserIdentifierRepository(private val dslContext: DSLContext) : UserIde
             identifierType = userIdentifier.identifierType
         )
         dslContext.executeInsert(record)
-        return record.toModel()
+        return record.toModel() as T
     }
 
     override fun getById(id: UserId): UserIdentifier? {

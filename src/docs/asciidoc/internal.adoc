@@ -14,6 +14,12 @@ and API keys. Source code is available on https://github.com/0xPolycode/polycode
 
 include::src/docs/asciidoc/base-url.adoc[]
 
+== Walled Login API
+All endpoints are public and do not require `Authorization: Bearer JWT` header.
+
+include::src/docs/asciidoc/wallet-login/create.adoc[]
+include::src/docs/asciidoc/wallet-login/verify.adoc[]
+
 == Project Management API
 All endpoints require `Authorization: Bearer JWT` header.
 

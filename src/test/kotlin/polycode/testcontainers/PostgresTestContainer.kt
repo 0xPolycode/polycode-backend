@@ -29,6 +29,7 @@ import polycode.generated.jooq.tables.MultiPaymentTemplateItemTable
 import polycode.generated.jooq.tables.MultiPaymentTemplateTable
 import polycode.generated.jooq.tables.ProjectTable
 import polycode.generated.jooq.tables.UserIdentifierTable
+import polycode.generated.jooq.tables.WalletLoginRequestTable
 
 class PostgresTestContainer : PostgreSQLContainer<PostgresTestContainer>("postgres:13.4-alpine") {
 
@@ -66,6 +67,7 @@ class PostgresTestContainer : PostgreSQLContainer<PostgresTestContainer>("postgr
             deleteFrom(ProjectTable).execute()
             deleteFrom(UserIdentifierTable).execute()
             deleteFrom(BlacklistedAddressTable).execute()
+            deleteFrom(WalletLoginRequestTable).execute()
         }
     }
 }

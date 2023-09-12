@@ -2,11 +2,14 @@ package polycode.config.authentication
 
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.GrantedAuthority
+import polycode.generated.jooq.id.UserId
+import polycode.util.Either
 import polycode.util.UtcDateTime
+import polycode.util.WalletAddress
 
 class JwtAuthToken(
     val token: String,
-    val id: String?, // TODO allow UserId | WalletAddress
+    val id: Either<UserId, WalletAddress>?,
     val email: String?,
     val validUntil: UtcDateTime
 ) : Authentication {
@@ -23,7 +26,7 @@ class JwtAuthToken(
 
     override fun getDetails(): Any? = null
 
-    override fun getPrincipal(): String? = id
+    override fun getPrincipal(): Either<UserId, WalletAddress>? = id
 
     override fun isAuthenticated(): Boolean = id != null
 
